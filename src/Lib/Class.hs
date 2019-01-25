@@ -1,7 +1,14 @@
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE TypeFamilies #-}
+
 module Lib.Class where
 
-class Monad m => MonadFoo m where
-  foo :: m ()
+class IsFooUniverse u where
+  defaultUniverse :: u
+
+class (Monad m, IsFooUniverse (Universe m)) => MonadFoo m where
+  type Universe m
+  foo :: Universe m -> m ()
 
 class Monad m => MonadBar m where
   bar :: m ()

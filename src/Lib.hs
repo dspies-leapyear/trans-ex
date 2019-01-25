@@ -9,6 +9,6 @@ import           Lib.Impl                      as X
 
 fooBarBaz :: (MonadFoo m, MonadBar m, MonadBaz m) => m ()
 fooBarBaz = do
-  foo
+  foo defaultUniverse
   bar
   baz
