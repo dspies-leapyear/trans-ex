@@ -12,13 +12,13 @@ main = hspec spec
 spec :: Spec
 spec = do
   describe "FooT" $ it "should foo" $ do
-    runFooT $ runMockBarT $ runMockBazT fooBarBaz
+    runApp $ runMockBarT $ runMockBazT fooBarBaz
     return () :: Expectation
   describe "BarT" $ it "should bar" $ do
-    runMockFooT $ runBarT $ runMockBazT fooBarBaz
+    runApp $ runMockFooT $ runMockBazT fooBarBaz
     return () :: Expectation
   describe "BazT" $ it "should baz" $ do
-    runMockFooT $ runMockBarT $ runBazT fooBarBaz
+    runApp $ runMockFooT $ runMockBarT fooBarBaz
     return () :: Expectation
 
 newtype MockFooT m x = MockFooT{runMockFooT :: m x}
